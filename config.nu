@@ -23,9 +23,9 @@ def dockerkaboom [] {
     let ids = (docker ps -q | lines)
     
     if ($ids | is-empty) {
-        print "Nenhum container em execução encontrado."
+        print "No running containers found."
     } else {
-        print $"Matando ($ids | length) containers..."
+        print $"Killing ($ids | length) containers..."
         $ids | each { |id| docker kill $id }
     }
 }
